@@ -82,11 +82,66 @@ This application uses the following external library:
 ```text
 ReportLab
 ```
+*ReportLab is utilized to generate loan history reports as PDF files.*
 
-## Running the Tests
+## How to Run the Application
 
-To verify that the application core features work correctly, you can run the unit tests using the following command in your terminal:
+1. **Clone this repository:**
+   ```bash
+   git clone URL_REPOSITORY
+   ```
+2. **Navigate into the project folder:**
+   ```bash
+   cd library-certification-python
+   ```
+3. **Install the required dependencies:**
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. **Run the application:**
+   ```bash
+   python app.py
+   ```
+
+## How to Run Unit Testing
+
+Execute the following command in your terminal:
 
 ```bash
 python -m unittest test_loan_service.py
 ```
+
+If all tests pass successfully, the output will display:
+
+```text
+OK
+```
+
+## Program Modules
+
+* **`app.py`**  
+  The main file to launch the desktop application using Tkinter. This file handles the user interface, layout, and tabs for the catalog, members, collections, borrowing, and loan history.
+
+* **`database.py`**  
+  The file responsible for managing the SQLite database connection, creating tables, adding member records, adding collections, logging borrowing transactions, and fetching history details.
+
+* **`report_generator.py`**  
+  The file designed to generate structured PDF reports utilizing the external ReportLab library.
+
+* **`test_loan_service.py`**  
+  The file designated for executing unit tests on the application's core functionality, including adding members, adding collections, processing loans, validating due dates, and tracking collection status switches.
+
+## Test Scenarios
+
+
+| No | Scenario | Expected Result |
+|---|---|---|
+| 1 | Add a member | Member data is successfully saved. |
+| 2 | Add a collection | Collection data is successfully saved. |
+| 3 | Create a loan | Loan transaction data is successfully saved. |
+| 4 | Check the due date | Due date is automatically set to exactly 7 days after the borrowing date. |
+| 5 | Check collection status | Collection status changes to `Borrowed` immediately after it is loaned out. |
+
+## Conclusion
+
+This application serves as a simple library system capable of displaying a catalog, logging member profiles, tracking inventory assets, processing loan flows, auto-calculating due windows, generating PDF summary outputs, and running structural unit tests.
